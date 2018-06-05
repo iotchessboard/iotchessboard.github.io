@@ -71,6 +71,6 @@
 
 #scrollbox {
     overflow: scroll;
-    width: 50%;
+    width: 400;
     height: 100px;
 }
