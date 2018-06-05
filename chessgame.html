@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+<title>Chessboard</title>
+<meta charset="UTF-8">  
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+
+<link rel="stylesheet" href="./css/w3schools.com.css">
+
+<!-- <base href="http://chessboardjs.com/" /> -->
+<link rel="stylesheet" href="./css/chessboard-0.3.0.css" />
+
+
+
+<script src="./js/json3.min.js"></script>
+<script src="./js/jquery-1.10.1.min.js"></script>
+<script src="./js/chessboard.js"></script>
+<script src="./js/websocket.js"></script>
+
+
+
+</script>
+
+
+</head>
+<body>
+
+<!-- <body onload="WebSocketAPI()" > -->
+
+
+<!-- Header -->
+<header class="w3-display-container w3-content w3-center" style="max-width:1500px">
+  <img src="./chess.jpg" width="1000" height="200" alt="logo" />
+  <div class="w3-display-middle w3-padding-large w3-border w3-wide w3-text-light-grey w3-center">
+    <h1 class="w3-hide-medium w3-hide-small w3-xxxlarge">IoT: Chessboard</h1>
+   <!-- <h3 class="w3-hide-medium w3-hide-small">IoT: Chessboard</h3> -->
+  </div>
+  
+  <!-- Navbar (placed at the bottom of the header image) -->
+  <div class="w3-bar w3-light-grey w3-round w3-display-bottommiddle w3-hide-small" style="bottom:-16px">
+    <a href="./index.html" class="w3-bar-item w3-button">Home</a>
+    <a href="./chessgame.html" class="w3-bar-item w3-button">Watch Chess</a>
+    <a href="./about.html" class="w3-bar-item w3-button">About</a>
+  </div>
+</header>
+
+<!-- Navbar on small screens -->
+<div class="w3-center w3-light-grey w3-padding-16 w3-hide-large w3-hide-medium">
+<div class="w3-bar w3-light-grey">
+  <a href="./index.html" class="w3-bar-item w3-button">Home</a>
+  <a href="./chessgame.html" class="w3-bar-item w3-button">Chessboard</a>
+  <a href="./about.html" class="w3-bar-item w3-button">About</a>
+</div>
+</div>
+<!-- Page content -->
+<div class="w3-content w3-padding-large w3-margin-top" id="portfolio"> 
+
+<!--		<h2>IoT: Chessboard<h2> -->
+		
+	
+	
+	<h2> Live visualization </h2>
+	
+	
+	<br />
+		
+	
+<div id="board" style="width: 400px"></div>
+
+
+
+
+<b>FEN string:</b>
+<!--<div id="tx1"></div>  -->
+<div id="scrollbox"></div>
+
+
+<script>
+
+//random FEN string for testing
+//FEN = 'rnbqkbnr/p1p5/1p1ppppp/8/8/1P1P1P1P/P1P1P1P1/RNBQKBNR';
+
+//Init chessboard in start position
+var board = ChessBoard('board', 'start');
+var prevFEN;
+
+function addElement() {
+    var scrollbox = document.getElementById('scrollbox');
+    
+    // Create some element, e.g. div
+    var newElement = document.createElement('div');
+    newElement.setAttribute('id', "some-id-for-new-element");
+    
+    if (prevFEN != FEN){
+	
+    newElement.innerHTML = FEN;
+    prevFEN = FEN;
+
+    }
+    
+    scrollbox.prepend(newElement);
+}
+
+ 
+//Function to move chess pieces
+function setFEN() {
+	board.position(FEN);
+	addElement();
+};
+
+
+</script>
+
+
+
+</body>
+
+</html>
